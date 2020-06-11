@@ -1,0 +1,9 @@
+/venv*.pyc
+*.csv
+/*.xml
+
+venv*/
+.idea/
+
+.DS_Store
+g
