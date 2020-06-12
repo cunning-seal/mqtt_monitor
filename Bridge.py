@@ -1,7 +1,7 @@
 from paho.mqtt.client import Client
 from config import *
 import json
-# from zbxsend import Metric, send_to_zabbix
+from zabbix_sender import Metric, send_to_zabbix
 
 
 class MQTTAgent:
@@ -9,7 +9,7 @@ class MQTTAgent:
         pass
 
     def process_data(self, topic, value):
-        # send_to_zabbix(("MQTT_AGENT", topic, value), ZABBIX_HOST, ZABBIX_PORT)
+        send_to_zabbix([Metric("MQTT_AGENT", "new_key_1", "2")], ZABBIX_HOST, ZABBIX_PORT)
         pass
 
 agent_obj = MQTTAgent()
