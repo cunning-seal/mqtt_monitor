@@ -50,7 +50,7 @@ def send_to_zabbix(metrics, zabbix_host='127.0.0.1', zabbix_port=10051, timeout=
         if not resp_hdr.startswith('ZBXD\1') or len(resp_hdr) != 13:
             logger.error('Wrong zabbix response')
             return False
-        resp_body_len = struct.unpack('<Q', resp_hdr[5:].encode())[0]
+        resp_body_len = struct.unpack('<Q', resp_hdr[5:])[0]
         # get response body from zabbix
         resp_body = zabbix.recv(resp_body_len)
         resp = json.loads(resp_body)
@@ -74,7 +74,7 @@ logger = logging.getLogger('zbxsender')
 
 
 def _recv_all(sock, count):
-    buf = ''
+    buf = ''.encode()
     while len(buf) < count:
         chunk = sock.recv(count - len(buf))
         if not chunk:
