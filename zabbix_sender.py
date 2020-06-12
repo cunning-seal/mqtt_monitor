@@ -47,7 +47,7 @@ def send_to_zabbix(metrics, zabbix_host='127.0.0.1', zabbix_port=10051, timeout=
         zabbix.sendall(packet)
         # get response header from zabbix
         resp_hdr = _recv_all(zabbix, 13)
-        if not resp_hdr.startswith('ZBXD\1') or len(resp_hdr) != 13:
+        if not resp_hdr.startswith('ZBXD\1'.encode()) or len(resp_hdr) != 13:
             logger.error('Wrong zabbix response')
             return False
         resp_body_len = struct.unpack('<Q', resp_hdr[5:])[0]
