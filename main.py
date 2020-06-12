@@ -16,10 +16,14 @@ if __name__ == '__main__':
             x = input()
             if x == "q":
                 break
-            if x == "a":
-                publisher.publish("/basic/1", str(datetime.datetime.now().time().strftime("%H:%M")))
-            if x == "b":
+            if x == "time":
                 publisher.publish("/basic/2", str(datetime.datetime.now().time().strftime("%H:%M")))
+            else:
+                publisher.publish("/basic/1", x)
+            # if x == "a":
+            #     publisher.publish("/basic/1", str(datetime.datetime.now().time().strftime("%H:%M")))
+            # if x == "b":
+            #     publisher.publish("/basic/2", str(datetime.datetime.now().time().strftime("%H:%M")))
 
         for device in device_list:
             device.finish()

@@ -10,7 +10,6 @@ class MQTTAgent:
 
     def process_data(self, topic, value):
         send_to_zabbix([Metric("MQTT_AGENT", "new_key_1", "2")], ZABBIX_HOST, ZABBIX_PORT)
-        pass
 
 agent_obj = MQTTAgent()
 

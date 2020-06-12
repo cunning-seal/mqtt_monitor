@@ -30,12 +30,12 @@ def send_to_zabbix(metrics, zabbix_host='127.0.0.1', zabbix_port=10051, timeout=
         metrics_data.append(('\t\t{\n'
                              '\t\t\t"host":%s,\n'
                              '\t\t\t"key":%s,\n'
-                             '\t\t\t"value":%s,\n'
-                             '\t\t\t"clock":%s}') % (j(m.host), j(m.key), j(m.value), clock))
+                             '\t\t\t"value":%s\n\t\t}') % (j(m.host), j(m.key), j(m.value)))
     json_data = ('{\n'
                  '\t"request":"sender data",\n'
-                 '\t"data":[\n%s]\n'
+                 '\t"data":[\n%s\n\t]\n'
                  '}') % (',\n'.join(metrics_data))
+    print(json_data)
 
     data_len = struct.pack('<Q', len(json_data))
     packet = 'ZBXD\1'.encode() + data_len + json_data.encode()
@@ -54,6 +54,7 @@ def send_to_zabbix(metrics, zabbix_host='127.0.0.1', zabbix_port=10051, timeout=
         # get response body from zabbix
         resp_body = zabbix.recv(resp_body_len)
         resp = json.loads(resp_body)
+        print(resp)
         logger.debug('Got response from Zabbix: %s' % resp)
         logger.info(resp.get('info'))
         if resp.get('response') != 'success':
