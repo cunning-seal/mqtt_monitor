@@ -18,7 +18,7 @@ agent_obj = MQTTAgent()
 
 def on_message(client, userdata, msg):
     print(msg.payload)
-    agent_obj.process_data(msg.topic, str(msg.payload))
+    agent_obj.process_data(msg.topic, msg.payload)
 
 
 class MQTTBridge(Client):
