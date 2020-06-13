@@ -17,7 +17,6 @@ logging.basicConfig(level=logging.WARNING, filename=ERROR_LOG_FILE_NAME)
 agent_obj = MQTTAgent()
 
 def on_message(client, userdata, msg):
-    print(msg.payload)
     agent_obj.process_data(msg.topic, msg.payload.decode())
 
 

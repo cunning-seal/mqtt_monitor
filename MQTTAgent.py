@@ -19,7 +19,7 @@ class MQTTAgent:
     def process_data(self, topic, value):
         for subscription, key in self.key_mapping.items():
             if topic_matches_sub(subscription, topic):
-                send_to_zabbix([Metric(MQTT_AGENT_HOST_NAME, key, value[1:])],
+                send_to_zabbix([Metric(MQTT_AGENT_HOST_NAME, key, value)],
                                ZABBIX_SERVER_HOST,
                                ZABBIX_SERVER_PORT
                                )

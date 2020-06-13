@@ -16,7 +16,7 @@ if __name__ == '__main__':
         # device_list[1].subscribe("basic/1")
         while True:
             time.sleep(0.3)
-            publisher.publish("/basic/2", random.randint(1,10))
+            publisher.publish("basic/2", random.randint(1,10))
             # str(datetime.datetime.now().time().strftime("%H:%M"))
             # if x == "a":
             #     publisher.publish("/basic/1", str(datetime.datetime.now().time().strftime("%H:%M")))
