@@ -13,7 +13,7 @@ class MQTTAgent:
         f = open(config_filename)
         for config_row in f:
             data = config_row.split(' ')
-            self.key_mapping.update({data[0]: data[1]})
+            self.key_mapping.update({data[0].strip(): data[1].strip()})
 
 
     def process_data(self, topic, value):
