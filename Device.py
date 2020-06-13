@@ -27,9 +27,9 @@ class Device(Client):
         self.on_disconnect = on_disconnect
 
     def start(self):
-        self.connect(BROKER_HOST, BROKER_PORT, 60)
+        self.connect(MQTT_BROKER_HOST, MQTT_BROKER_PORT, 60)
         self.loop_start()
-        self.subscribe("/basic/+")
+        # self.subscribe("/basic/+")
 
     def finish(self):
         self.loop_stop()
