@@ -6,6 +6,6 @@ from MQTTBridge import MQTTBridge
 
 
 if __name__ == '__main__':
-    a = AgentStart()
+    a = AgentStartView()
     a.show()
 

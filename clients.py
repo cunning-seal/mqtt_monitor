@@ -1,5 +1,7 @@
 from  Device import Device
 import datetime
+import random
+import time
 if __name__ == '__main__':
     publisher = Device("1")
     subscriber = Device("456")
@@ -11,15 +13,11 @@ if __name__ == '__main__':
     try:
         for device in device_list:
             device.start()
-        device_list[1].subscribe("basic/1")
+        # device_list[1].subscribe("basic/1")
         while True:
-            x = input()
-            if x == "q":
-                break
-            if x == "time":
-                publisher.publish("/basic/2", str(datetime.datetime.now().time().strftime("%H:%M")))
-            else:
-                publisher.publish("/basic/1", x)
+            time.sleep(0.3)
+            publisher.publish("/basic/2", random.randint(1,10))
+            # str(datetime.datetime.now().time().strftime("%H:%M"))
             # if x == "a":
             #     publisher.publish("/basic/1", str(datetime.datetime.now().time().strftime("%H:%M")))
             # if x == "b":

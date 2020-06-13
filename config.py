@@ -13,6 +13,4 @@ ZABBIX_SERVER_PORT = 10051
 MQTT_AGENT_HOST_NAME = "MQTT_AGENT"
 
 # настройки логирования
-
 ERROR_LOG_FILE_NAME = "test.log"
-

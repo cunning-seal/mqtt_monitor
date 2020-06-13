@@ -11,7 +11,8 @@ def on_message(client, userdata, msg):
 
 
 def on_publish(client: Client, userdata, mid):
-    print(client._client_id)
+    pass
+    # print(client._client_id)
 
 
 def on_disconnect(client, userdata, rc):

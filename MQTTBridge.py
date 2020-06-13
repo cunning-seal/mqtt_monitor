@@ -17,8 +17,9 @@ logging.basicConfig(level=logging.WARNING, filename=ERROR_LOG_FILE_NAME)
 agent_obj = MQTTAgent()
 
 def on_message(client, userdata, msg):
-    agent_obj.process_data(msg.topic, str(msg.payload))
     print(msg.payload)
+    agent_obj.process_data(msg.topic, str(msg.payload))
+
 
 class MQTTBridge(Client):
     def __init__(self, config_filename, id=MQTT_BRIDGE_ID):
